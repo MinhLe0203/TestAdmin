@@ -652,7 +652,7 @@ function displayDataAndPaginationSearchAccount(data, currentPage) {
     tableBody__search.innerHTML = '';
     var stt = 1;
     data.result.forEach(item => {
-        const dateObject = new Date(item.dateOfBirth);
+    const dateObject = new Date(item.dateOfBirth);
     const day = dateObject.getDate();
     const month = dateObject.getMonth() + 1;
     const year = dateObject.getFullYear();
@@ -1398,6 +1398,47 @@ function addDataForClass(){
         console.error(error);
     });
 }  
+
+// search class
+let dataLoaded_searchClass = false;
+let tableBody_searchClass = null; 
+let pageIndexManagersearchClass = 1;
+async function GetAllSearchDataClass(pageIndex) {
+    const nameClassSearch = document.getElementById("seach_name_class").value;
+    // Gọi API ban đầu với số trang pageIndex
+    if(nameClassSearch === "") {
+        if (!dataLoaded_searchClass) {
+            await fetchApiWithPageNumberManagerClass(pageIndex);
+            dataLoaded_searchClass = true;
+        }
+        else {
+            await fetchApiWithPageNumberManagerClass(pageIndex);
+        }
+    }
+    else {
+        if (!dataLoaded__search) {
+            await fetchApiWithPageNumberSearchClass(pageIndex, nameClassSearch);
+            dataLoaded__search = true;
+        }
+        else {
+            await fetchApiWithPageNumberSearchClass(pageIndex, nameClassSearch);
+        }
+    }
+    
+}
+async function fetchApiWithPageNumberSearchClass(pageNumber, nameClassSearch) {
+    try {
+        
+        const getClassSearchUrl = `https://localhost:7013/api/Class/Id?id=${nameClassSearch}&pageIndex=${pageNumber}&pageSize=${10}`;
+        const response = await fetch(getClassSearchUrl);
+        const data = await response.json();
+        displayDataAndPaginationManagerClass(data, pageNumber);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        alert(error);
+    }
+}
+
 // classRoom
 function showInforClassRoom(){
     var managementClassRoom = document.getElementById("management_classRoom");
@@ -1788,7 +1829,45 @@ function addDataForClassRoom(){
     });
 } 
 
-
+// search classRoom
+// search class
+let dataLoaded_searchClassRoom = false;
+let tableBody_searchClassRoom = null; 
+let pageIndexManagersearchClassRoom = 1;
+async function GetAllSearchDataClassRoom(pageIndex) {
+    const nameClassRoomSearch = document.getElementById("seach_name_classRoom").value;
+    // Gọi API ban đầu với số trang pageIndex
+    if(nameClassRoomSearch === "") {
+        if (!dataLoaded_searchClassRoom) {
+            await fetchApiWithPageNumberManagerClassRoom(pageIndex);
+            dataLoaded_searchClassRoom = true;
+        }
+        else {
+            await fetchApiWithPageNumberManagerClassRoom(pageIndex);
+        }
+    }
+    else {
+        if (!dataLoaded__search) {
+            await fetchApiWithPageNumberSearchClassRoom(pageIndex, nameClassRoomSearch);
+            dataLoaded__search = true;
+        }
+        else {
+            await fetchApiWithPageNumberSearchClassRoom(pageIndex, nameClassRoomSearch);
+        }
+    }
+    
+}
+async function fetchApiWithPageNumberSearchClassRoom(pageNumber, nameClassRoomSearch) {
+    try {
+        const getClassRoomSearchUrl = `https://localhost:7013/api/ClassRoom/Id?id=${nameClassRoomSearch}&pageIndex=${pageNumber}&pageSize=${10}`;
+        const response = await fetch(getClassRoomSearchUrl);
+        const data = await response.json();
+        displayDataAndPaginationManagerClassRoom(data, pageNumber);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        alert(error);
+    }
+}
 
 // Khai báo biến
 let dataLoaded__searchClassForSchedule = false;
