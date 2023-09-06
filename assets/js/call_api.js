@@ -2192,207 +2192,191 @@ async function IsRegisteredSchedule(pageIndex) {
     }
 }
 
+function chekcHtml(){
+    alert("ahihi");
+}
 async function fetchApiWithPageNumberRegisteredScheduleClass(pageNumber) {
-    const fullNameArray = [];
     try {
-        const response = await fetch(`https://localhost:7013/api/UserManager`, {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-            },
-        });
+        const response = await fetch(`https://localhost:7013/api/LectureSchedule/Registered_Calendar?pageIndex=${pageNumber}&pageSize=${5}&check=${1}&Name=${'string'}`, {
+                method: 'GET',
+                headers: {
+                  accept: 'application/json',
+                },
+            });
         const data = await response.json();
-        data.result.forEach(item => {
-            if (item.fullName !== null) {
-                fullNameArray.push(item.fullName);
-            }
-        });
-        RegisteredSchedule( pageNumber,fullNameArray);
+        RegisteredSchedule( pageNumber,data);
     } catch (error) {
         console.error('Error fetching data:', error);
         alert(error);
     }
     
 }
-async function RegisteredSchedule( currentPage,fullNameArray){
-    alert("okeeeee");
+async function RegisteredSchedule( currentPage,data){
+
+    const dataContainer = document.getElementById('Registered_Schedule_table_container');
+    const showListClass = document.getElementById('ScheduleManager');
+
+    // hiển thị
+    var managementScheduleRegister = document.getElementById("management_Schedule");
+    var tableScheduleRegister = document.getElementById("Registered_Schedule_table_container");
+    var updateClass = document.getElementById("update_class");
+    var addClass = document.getElementById("add_class");
+    var ManagerDisplay = document.getElementById("dataContainer");
+    var information = document.querySelector('.information')
+    var element = document.getElementById("change__information");
+    var AreaSchedule = document.getElementById("Schedule");
+    var ChangeInformation = document.getElementById("Change_information");
+    var ChangePassword = document.getElementById("Change_password");
+    var managementSchedule = document.getElementById("management_Schedule");
+    var tableSchedule = document.getElementById("Schedule_table_container");
+    
+    
+    // // Đổi màu
+    var textColorManagerClass = document.getElementById("manageClass_text");
+    var iconDownClass = document.getElementById("manageClass_icon--down");
+    // mặc định
+    var textColorManagerClassRoom = document.getElementById("managerClassRoom__Text");
+    var iconColorManagerClassRoom = document.getElementById("managerClassRoom__Icon");
+    var textColorManagerAccount = document.getElementById("managerAcount__Text");
+    var iconColorManagerAccount = document.getElementById("managerAcount__Icon");
+    var informationListText = document.getElementById("information__list");
+    var informationListIcon = document.getElementById("information__list--items__icon");
+    var navbarSchedulingIcon = document.getElementById("scheduling");
+    var navbarSchedulingText = document.getElementById("chedulingText");
+    var managementClassRoom = document.getElementById("management_classRoom");
+    // //
+    var DataNull = document.getElementById("ClassManager");
+    if(tableScheduleRegister.style.display === "none"){
+        //Hiển thị 
+        alert("Minh dz");
+        managementScheduleRegister.style.display = "block";
+        tableScheduleRegister.style.display = "block";
+        managementClassRoom.style.display = "none";
+        updateClass.style.display = "none";
+        addClass.style.display = "none";
+        ManagerDisplay.style.display = "none";
+        information.style.display = 'none';
+        element.style.display = "none";
+        AreaSchedule.style.display = "none";
+        ChangeInformation.style.display = "none";
+        ChangePassword.style.display = "none";
+        managementSchedule.style.display = "none";
+        tableSchedule.style.display = "none";
+        
+        // Đổi màu chữ
+        textColorManagerClass.style.color = "#31B1DB";
+        iconDownClass.style.color = "#31B1DB";
+        // mặc định
+        textColorManagerClassRoom.style.color = "#fff";
+        iconColorManagerClassRoom.style.color = "#fff";
+        textColorManagerAccount.style.color = "#fff";
+        iconColorManagerAccount.style.color = "#fff";
+        informationListText.style.color = "#fff";
+        informationListIcon.style.color = "#fff";
+        navbarSchedulingIcon.style.color = "#fff";
+        navbarSchedulingText.style.color = "#fff";
+    }
+    else{
+        managementScheduleRegister.style.display = "block";
+        tableScheduleRegister.style.display = "block";
+        managementClassRoom.style.display = "none";
+        updateClass.style.display = "none";
+        addClass.style.display = "none";
+        ManagerDisplay.style.display = "none";
+        information.style.display = 'none';
+        element.style.display = "none";
+        AreaSchedule.style.display = "none";
+        ChangeInformation.style.display = "none";
+        ChangePassword.style.display = "none";
+        managementSchedule.style.display = "none";
+        tableSchedule.style.display = "none";
+
+        textColorManagerClass.style.color = "#31B1DB";
+        iconDownClass.style.color = "#31B1DB";
+        textColorManagerClassRoom.style.color = "#fff";
+        iconColorManagerClassRoom.style.color = "#fff";
+        textColorManagerAccount.style.color = "#fff";
+        iconColorManagerAccount.style.color = "#fff";
+        informationListText.style.color = "#fff";
+        informationListIcon.style.color = "#fff";
+        navbarSchedulingIcon.style.color = "#fff";
+        navbarSchedulingText.style.color = "#fff";
+    }
+    // // Đổ dữ liệu
     try {
-        for (let i = 0; i<fullNameArray.length; i++){
-            const response = await fetch(`https://localhost:7013/api/LectureSchedule/Registered_Calendar?pageIndex=${currentPage}&pageSize=${5}&check=${1}&Name=${encodeURIComponent(fullNameArray[i])}`, {
-                method: 'GET',
-                headers: {
-                  accept: 'application/json',
-                },
-            });
-            const data = await response.json();
-            const dataContainer = document.getElementById('Registered_Schedule_table_container');
-            const showListClass = document.getElementById('ScheduleManager');
-            var tableSchedule = document.getElementById("Schedule_table_container");
-            // hiển thị
-            //management_Schedule
-            var managementScheduleRegister = document.getElementById("management_Schedule");
-            var tableScheduleRegister = document.getElementById("Registered_Schedule_table_container");
-            var updateClass = document.getElementById("update_class");
-            var addClass = document.getElementById("add_class");
-            var ManagerDisplay = document.getElementById("dataContainer");
-            var information = document.querySelector('.information')
-            var element = document.getElementById("change__information");
-            var AreaSchedule = document.getElementById("Schedule");
-            var ChangeInformation = document.getElementById("Change_information");
-            var ChangePassword = document.getElementById("Change_password");
-            var managementSchedule = document.getElementById("management_Schedule");
-         
-            
-            // // Đổi màu
-            var textColorManagerClass = document.getElementById("manageClass_text");
-            var iconDownClass = document.getElementById("manageClass_icon--down");
-            // mặc định
-            var textColorManagerClassRoom = document.getElementById("managerClassRoom__Text");
-            var iconColorManagerClassRoom = document.getElementById("managerClassRoom__Icon");
-            var textColorManagerAccount = document.getElementById("managerAcount__Text");
-            var iconColorManagerAccount = document.getElementById("managerAcount__Icon");
-            var informationListText = document.getElementById("information__list");
-            var informationListIcon = document.getElementById("information__list--items__icon");
-            var navbarSchedulingIcon = document.getElementById("scheduling");
-            var navbarSchedulingText = document.getElementById("chedulingText");
-            var managementClassRoom = document.getElementById("management_classRoom");
-            // //
-            var DataNull = document.getElementById("ClassManager");
-            if(tableScheduleRegister.style.display === "none"){
-                //Hiển thị 
-                managementScheduleRegister.style.display = "block";
-                tableScheduleRegister.style.display = "block";
-                managementClassRoom.style.display = "none";
-                updateClass.style.display = "none";
-                addClass.style.display = "none";
-                ManagerDisplay.style.display = "none";
-                information.style.display = 'none';
-                element.style.display = "none";
-                AreaSchedule.style.display = "none";
-                ChangeInformation.style.display = "none";
-                ChangePassword.style.display = "none";
-                managementSchedule.style.display = "none";
-                tableSchedule.style.display = "none";
-                
-                // Đổi màu chữ
-                textColorManagerClass.style.color = "#31B1DB";
-                iconDownClass.style.color = "#31B1DB";
-                // mặc định
-                textColorManagerClassRoom.style.color = "#fff";
-                iconColorManagerClassRoom.style.color = "#fff";
-                textColorManagerAccount.style.color = "#fff";
-                iconColorManagerAccount.style.color = "#fff";
-                informationListText.style.color = "#fff";
-                informationListIcon.style.color = "#fff";
-                navbarSchedulingIcon.style.color = "#fff";
-                navbarSchedulingText.style.color = "#fff";
+        if (!Array.isArray(data.result) || data.result.length === 0) {
+            DataNull.style.display = "block";
+            showListClass.innerHTML = '<h1 id="Data__null">Không có dữ liệu</h1>';
+        } 
+        else 
+        {    
+            if (!tableBody__RegisteredSchedules) {
+                DataNull.style.display = "none";
+                const table = document.createElement('table');
+                table.id = "search_table--managerSchedule"
+                table.innerHTML = `
+                    <thead id="ScheduleManager__search--table">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã học phần</th>
+                            <th>Giảng viên</th>
+                            <th>Lớp học</th>
+                            <th>Phòng học</th>
+                            <th>Môn học</th>
+                            <th>Lịch học</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                `;
+                dataContainer.appendChild(table);
+                tableBody__RegisteredSchedules = table.querySelector('tbody');
             }
-            else{
-                managementScheduleRegister.style.display = "block";
-                tableScheduleRegister.style.display = "block";
-                managementClassRoom.style.display = "none";
-                updateClass.style.display = "none";
-                addClass.style.display = "none";
-                ManagerDisplay.style.display = "none";
-                information.style.display = 'none';
-                element.style.display = "none";
-                AreaSchedule.style.display = "none";
-                ChangeInformation.style.display = "none";
-                ChangePassword.style.display = "none";
-                managementSchedule.style.display = "none";
-                tableSchedule.style.display = "none";
+        }  
+        // tableBody__RegisteredSchedules.innerHTML = '';
+        var stt = 1;
+        data.result.forEach(item => {
+            const row = document.createElement('tr');
 
-                textColorManagerClass.style.color = "#31B1DB";
-                iconDownClass.style.color = "#31B1DB";
-                textColorManagerClassRoom.style.color = "#fff";
-                iconColorManagerClassRoom.style.color = "#fff";
-                textColorManagerAccount.style.color = "#fff";
-                iconColorManagerAccount.style.color = "#fff";
-                informationListText.style.color = "#fff";
-                informationListIcon.style.color = "#fff";
-                navbarSchedulingIcon.style.color = "#fff";
-                navbarSchedulingText.style.color = "#fff";
-            }
-            // // Đổ dữ liệu
-            try {
-                if (!Array.isArray(data.result) || data.result.length === 0) {
-                    DataNull.style.display = "block";
-                    showListClass.innerHTML = '<h1 id="Data__null">Không có dữ liệu</h1>';
-                } 
-                else 
-                {    
-                    if (!tableBody__RegisteredSchedules) {
-                        DataNull.style.display = "none";
-                        const table = document.createElement('table');
-                        table.id = "search_table--managerSchedule"
-                        table.innerHTML = `
-                            <thead id="ScheduleManager__search--table">
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã học phần</th>
-                                    <th>Giảng viên</th>
-                                    <th>Lớp học</th>
-                                    <th>Phòng học</th>
-                                    <th>Môn học</th>
-                                    <th>Lịch học</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        `;
-                        dataContainer.appendChild(table);
-                        tableBody__RegisteredSchedules = table.querySelector('tbody');
-                    }
-                }  
-                // tableBody__RegisteredSchedules.innerHTML = '';
-                var stt = 1;
-                data.result.forEach(item => {
-                    const row = document.createElement('tr');
-
-                        // row.style.height = '60px';
-                    row.innerHTML = `
-                        <td style ="width:5% ">${stt}</td>
-                        <td style="width:30%">${item.course_Code === null || item.course_Code === '' ? '' : item.course_Code}</td>
-                        <td style="width:5%">${item.fullName === null || item.fullName === '' ? '' : item.fullName}</td>
-                        <td style="width:5%">${item.lopHoc === null || item.lopHoc === '' ? '' : item.lopHoc}</td>
-                        <td style ="width:15%">${item.phongHoc}</td>
-                        <td style ="width:20%">${item.monHoc}</td>
-                        <td style ="width:20%">${item.lichHocTongList}</td>
-                        <!-- Thêm các cột khác tương tự -->
-                    `;
-                    stt++;
-                    tableBody__RegisteredSchedules.appendChild(row);  
-                });     
-            } 
-            catch (error) {
-                console.error('Error fetching data:', error);
-                alert(error);
-            }
-
-            // Tạo và gắn sự kiện cho các nút phân trang
-            const paginationContainer = document.createElement("div");
-            paginationContainer.style.margin = "20px 20px";
-            paginationContainer.style.position = "absolute";
-            paginationContainer.style.left = "50%";
-
-            for (let i = 1; i <= Math.ceil(data.totalRecords / 5); i++) {
-                const button = document.createElement("button");
-                button.style.padding = "10px 10px";
-                button.innerText = i;
-
-                button.addEventListener("click", () => {
-                    pageIndexAllSchedules = i;
-                    fetchApiWithPageNumberManagerScheduleClass(pageIndexAllSchedules);
-                });
-                paginationContainer.appendChild(button);
-            }
-            tableBody__AllSchedules.appendChild(paginationContainer);
-        }        
+                // row.style.height = '60px';
+            row.innerHTML = `
+                <td style ="width:5% ">${stt}</td>
+                <td style="width:30%">${item.course_Code === null || item.course_Code === '' ? '' : item.course_Code}</td>
+                <td style="width:5%">${item.fullName === null || item.fullName === '' ? '' : item.fullName}</td>
+                <td style="width:5%">${item.lopHoc === null || item.lopHoc === '' ? '' : item.lopHoc}</td>
+                <td style ="width:15%">${item.phongHoc}</td>
+                <td style ="width:20%">${item.monHoc}</td>
+                <td style ="width:20%">${item.lichHocTongList}</td>
+                <!-- Thêm các cột khác tương tự -->
+            `;
+            stt++;
+            tableBody__RegisteredSchedules.appendChild(row);  
+        });     
     } 
     catch (error) {
         console.error('Error fetching data:', error);
         alert(error);
     }
+
+    // Tạo và gắn sự kiện cho các nút phân trang
+    const paginationContainer = document.createElement("div");
+    paginationContainer.style.margin = "20px 20px";
+    paginationContainer.style.position = "absolute";
+    paginationContainer.style.left = "50%";
+
+    for (let i = 1; i <= Math.ceil(data.totalRecords / 5); i++) {
+        const button = document.createElement("button");
+        button.style.padding = "10px 10px";
+        button.innerText = i;
+
+        button.addEventListener("click", () => {
+            pageIndexAllSchedules = i;
+            fetchApiWithPageNumberManagerScheduleClass(pageIndexAllSchedules);
+        });
+        paginationContainer.appendChild(button);
+    }
+    tableBody__AllSchedules.appendChild(paginationContainer);
+       
 }
 function UnRegisteredSchedule(){
     alert("UnRegister");

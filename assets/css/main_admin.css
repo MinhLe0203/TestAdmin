@@ -738,10 +738,9 @@ td .classRoom_delete_button{
 }
 
 /* Schedules */
-
+#Registered_Schedule_table_container,
 .management_Schedule {
     display: none;
-    
 }
 .Schedule_heading h1{
     width: 20%;
