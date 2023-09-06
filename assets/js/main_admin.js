@@ -12,16 +12,6 @@ function Show() {
     var ChangePassword = document.getElementById("Change_password");
     var colorTextChangePassword__Icon = document.getElementById("changePassword__icon");
     var colorTextChangePassword = document.getElementById("changePassword__list--items__text");
-    // class and classRoom
-    //     display
-    var managementClass = document.getElementById("management_class");
-    var managementClassRoom = document.getElementById("management_classRoom");
-    var tableClassRoom = document.getElementById("classRoom_table_container");
-    //     text
-    var textColorManagerClass = document.getElementById("manageClass_text");
-    var iconDownClass = document.getElementById("manageClass_icon--down");
-    var textColorManagerClassRoom = document.getElementById("managerClassRoom__Text");
-    var iconColorManagerClassRoom = document.getElementById("managerClassRoom__Icon");
     //Manager Account 
     var colorTextManagerAccount__Icon = document.getElementById("ManagerAccount");
     var colorTextManagerAccount = document.getElementById("managerAcount__Text");
@@ -34,9 +24,6 @@ function Show() {
         ChangePassword.style.display = "none";
         ManagerDisplay.style.display = "none";
         AreaSchedule.style.display = "none";
-        managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
-        managementClass.style.display = "none";
         information.style.display = 'block';
         element.style.display = "block";
         icon.style.transform = "rotate(90deg)";
@@ -51,17 +38,10 @@ function Show() {
         colorTextManagerAccount.style.color = "#fff";
         navbarSchedulingIcon.style.color = "#fff";
         navbarSchedulingText.style.color = "#fff";
-        textColorManagerClass.style.color = "#fff";
-        iconDownClass.style.color = "#fff";
-        textColorManagerClassRoom.style.color = "#fff";
-        iconColorManagerClassRoom.style.color = "#fff";
     }
     else {
         AreaSchedule.style.display = "none";
         element.style.display = "none";
-        managementClass.style.display = "none";
-        managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
         icon.style.transform = "";
         colorText.style.color = "#fff";
         icon.style.color = "#fff";
@@ -69,10 +49,6 @@ function Show() {
         colorTextManagerAccount.style.color = "#fff";
         navbarSchedulingIcon.style.color = "#fff";
         navbarSchedulingText.style.color = "#fff";
-        textColorManagerClass.style.color = "#fff";
-        iconDownClass.style.color = "#fff";
-        textColorManagerClassRoom.style.color = "#fff";
-        iconColorManagerClassRoom.style.color = "#fff";
     }
 }
 
@@ -92,11 +68,6 @@ function ShowchangInfor() {
     //Manager Account 
     var colorTextManagerAccount__Icon = document.getElementById("ManagerAccount");
     var colorTextManagerAccount = document.getElementById("managerAcount__Text");
-    // class and class Room
-    var managementClass = document.getElementById("management_class");
-    var managementClassRoom = document.getElementById("management_classRoom");
-    var tableClassRoom = document.getElementById("classRoom_table_container");
-    var tableClass = document.getElementById("class_table_container");
     // Scheduling
     var AreaSchedule = document.getElementById("Schedule");
     var navbarSchedulingIcon = document.getElementById("scheduling");
@@ -107,10 +78,6 @@ function ShowchangInfor() {
         AreaSchedule.style.display = "none";
         information.style.display = "none";
         ManagerDisplay.style.display = "none";
-        managementClass.style.display = "none";
-        managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
-        tableClass.style.display = "none";
         colorText.style.color = "#fff";
         icon.style.color = "#fff"; 
         colorTextChangeInfro__Icon.style.color = "#33b5e5" ;
@@ -156,11 +123,6 @@ function ShowchangPassword() {
     //Manager Account 
     var colorTextManagerAccount__Icon = document.getElementById("ManagerAccount");
     var colorTextManagerAccount = document.getElementById("managerAcount__Text");
-    // class and classRoom
-    var managementClass = document.getElementById("management_class");
-    var managementClassRoom = document.getElementById("management_classRoom");
-    var tableClassRoom = document.getElementById("classRoom_table_container");
-    var tableClass = document.getElementById("class_table_container");
     //Scheduling
     var AreaSchedule = document.getElementById("Schedule");
     var navbarSchedulingIcon = document.getElementById("scheduling");
@@ -171,10 +133,6 @@ function ShowchangPassword() {
         ChangeInformation.style.display = "none";
         ManagerDisplay.style.display = "none";
         AreaSchedule.style.display = "none";
-        managementClass.style.display = "none";
-        managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
-        tableClass.style.display = "none";
         //
         colorText.style.color = "#fff";
         icon.style.color = "#fff"; 
@@ -381,13 +339,11 @@ function ShowScheduling() {
     var managerAccText = document.getElementById("managerAcount__Text");
     // display
     var managementClassRoom = document.getElementById("management_classRoom");
-    var tableClassRoom = document.getElementById("classRoom_table_container");
     var style = window.getComputedStyle(AreaSchedule);
     var updateClassRoom = document.getElementById("update_classRoom");
     var addClassRoom = document.getElementById("add_classRoom");
     var dataContainer = document.getElementById("dataContainer");
     var managementClass = document.getElementById("management_class");
-
     // text and icon
     var managerAcountText = document.getElementById("managerAcount__Text");
     var managerAcountIcon = document.getElementById("managerAcount__Icon");
@@ -398,7 +354,6 @@ function ShowScheduling() {
         // display
         AreaSchedule.style.display = "block";
         managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
         dataContainer.style.display = "none";
         updateClassRoom.style.display = "none";
         addClassRoom.style.display = "none";
@@ -434,7 +389,6 @@ function ShowScheduling() {
         managerAccount.style.display = "none";
         AreaSchedule.style.display = "none";
         managementClassRoom.style.display = "none";
-        tableClassRoom.style.display = "none";
         dataContainer.style.display = "none";
         updateClassRoom.style.display = "none";
         addClassRoom.style.display = "none";
