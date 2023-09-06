@@ -54,17 +54,17 @@
                                     <a href="#" id="chedulingText">Sắp xếp lịch giảng</a>
                                 </span>
                             </li>
-                            <li class="information__list--items">
-                                <i class="fa-solid fa-chevron-right"></i>
+                            <li class="information__list--items" onclick="GetAllScheduleClass(1)">
+                                <i class="fa-solid fa-chevron-right" id="showSchedule_icon"></i>
                                 <span class="information__list--items__text">
-                                    <a href="">Xem lịch giảng</a>
+                                    <a href="#" id="showSchedule_text">Xem lịch giảng</a>
                                 </span>
                             </li>
                             <!-- Minh le -->
                             <li class="information__list--items" onclick=" GetAllManagerClass(1)">
-                                <i class="fa-solid fa-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right" id="manageClass_icon--down"></i>
                                 <span class="information__list--items__text">
-                                    <a href="#">Quản lý lớp học</a>
+                                    <a href="#" id="manageClass_text">Quản lý lớp học</a>
                                 </span>
                             </li>
                             <li class="information__list--items">
@@ -286,8 +286,8 @@
                     <h1>Quản lý lớp học</h1>
                 </div>
                 <div class="classRoom_searching">
-                    <input type="text" class="seach_name_classRoom" id="seach_name_class" placeholder="Nhập tên lớp học">
-                    <i class="fa-solid fa-magnifying-glass seach_icon_classRoom" onclick="GetAllSearchDataClass(1)"></i>
+                    <input type="text" class="seach_name_classRoom" placeholder="Nhập tên lớp học">
+                    <i class="fa-solid fa-magnifying-glass seach_icon_classRoom"></i>
                 </div>
                 <div class="class_table">
                     <div class="class_table_container" id="class_table_container"></div>
@@ -357,8 +357,8 @@
                     <h1>Quản lý phòng học</h1>
                 </div>
                 <div class="classRoom_searching">
-                    <input type="text" class="seach_name_classRoom" id="seach_name_classRoom" placeholder="Nhập tên phòng học">
-                    <i class="fa-solid fa-magnifying-glass seach_icon_classRoom" onclick="GetAllSearchDataClassRoom(1)"></i>
+                    <input type="text" class="seach_name_classRoom" placeholder="Nhập tên phòng học">
+                    <i class="fa-solid fa-magnifying-glass seach_icon_classRoom"></i>
                 </div>
                 <div class="classRoom_table">
                     <div class="classRoom_table_container" id="classRoom_table_container"></div>
@@ -416,7 +416,30 @@
             </div>
         </div>
 
-
+        <!-- All Schedules -->
+        <div class="Schedule_Container" id="Schedule_Container" >
+            <div class="management_Schedule" id="management_Schedule" >
+                <div class="Schedule_heading">
+                    <h1>Xem lịch giảng dạy</h1>
+                </div>
+                <div class="Schedule_searching">
+                    <input type="text" class="seach_name_Schedule" id="seach_name_Schedule" placeholder="Nhập tên lớp học">
+                    <i class="fa-solid fa-magnifying-glass seach_icon_Schedule" ></i>
+     
+                </div>
+                <div class="Schedule_table">
+                    <div class="Schedule_table_container" id="Schedule_table_container"></div>
+                    <div class="Schedule_table_container" id="Registered_Schedule_table_container"></div>
+                    <div class="Schedule_table_container" id="UnRegister_Schedule_table_container"></div>
+                </div>
+                <div id="ScheduleManager"></div>
+                <div class="Schedule__button--add" >     
+                    <button id="IsSignUp_Schedule_button" onclick="UnRegisteredSchedule()">Lịch chưa đăng ký</button>
+                    <button id="IsUnSignUp_Schedule_button" onclick="IsRegisteredSchedule(1)">Lịch đã đăng ký</button>      
+                    <button id="add_Schedule_button">Xuất Excel</button>
+                </div>
+            </div>
+        </div>
         
         <!-- Manager Register Schedule -->
         <div class="Schedule" id="Schedule">

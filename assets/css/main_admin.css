@@ -429,12 +429,20 @@ h1 {
     position: absolute;
     top: 18%;
     left: 25%;
-    width: 70%;
+    width: 68%;
+    height: 3%;
+    border-radius: 20px;
 }
 .seach_icon_classRoom{
     position: absolute;
-    top: 21%;
-    left: 94%; 
+    top: 20%;
+    left: 91.8%;
+    padding: 8px;
+    background-color: #00C4CC;
+    border-radius: 20px;
+}
+.seach_icon_classRoom:hover{
+    opacity: 0.6;
 }
 #classRoom_table_container{
     position: absolute;
@@ -729,3 +737,64 @@ td .classRoom_delete_button{
     background-color: white; /* Màu nền cho các hàng lẻ */
 }
 
+/* Schedules */
+
+.management_Schedule {
+    display: none;
+    
+}
+.Schedule_heading h1{
+    width: 20%;
+    text-align: left;
+    margin-top: 30px;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #00c4cc;
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    width: 15%;
+}
+.seach_name_Schedule{
+    position: absolute;
+    top: 18%;
+    left: 25%;
+    width: 68%;
+    height: 3%;
+    border-radius: 20px;
+}
+.seach_icon_Schedule{
+    position: absolute;
+    top: 20%;
+    left: 91.8%;
+    padding: 8px;
+    background-color: #00C4CC;
+    border-radius: 20px;
+}
+.seach_icon_Schedule:hover{
+    opacity: 0.6;
+}
+.Schedule__button--add{
+    position: absolute;
+    right: 6%;
+    bottom: 15%;
+}
+#IsSignUp_Schedule_button,
+#IsUnSignUp_Schedule_button,
+#add_Schedule_button{
+    padding: 10px 15px;
+    background-color: #00c4cc;
+    border-radius: 10px;
+}
+.Schedule_table{
+    width: 86%;
+    position: absolute;
+    top: 26%;
+    left: 6%;
+}
+.Schedule_table_container{
+    width: 80%;
+    position: absolute;
+    top: 26%;
+    left: 20%;
+}
